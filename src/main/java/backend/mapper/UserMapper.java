@@ -2,7 +2,7 @@ package backend.mapper;
 
 import org.apache.ibatis.annotations.Select;
 
-import backend.dto.User;
+import backend.dao.User;
 
 import java.util.List;
 
