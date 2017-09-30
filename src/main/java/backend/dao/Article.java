@@ -5,16 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Field;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(type = "article_type", indexName = "article", shards = 2, refreshInterval = "-1")
+@Document(indexName = "us", type = "user")
 public class Article {
-    @Id Integer id;
-    @Field String author;
-    @Field String content;
+    private String id;
+    private String name;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

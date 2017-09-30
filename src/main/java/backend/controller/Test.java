@@ -1,27 +1,23 @@
 package backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import backend.mapper.UserMapper;
-import backend.dao.Article;
-
-
-
+import backend.es.EsCommonService;
 
 @Controller
 public class Test {
     @Autowired private UserMapper userMapper;
-    @Autowired private ElasticsearchTemplate elasticsearchTemplate;
+    @Autowired private  EsCommonService esCommonService;
 
     @RequestMapping("/test")
     @ResponseBody
-    public String test(){
+    public String test(String id){
         System.out.println(userMapper.select());
-        elasticsearchTemplate.createIndex(Article.class);
+        esCommonService.addDoc(id);
         return "true";
     }
 }
